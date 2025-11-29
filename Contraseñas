@@ -1,0 +1,46 @@
+import random
+import string
+
+def generar_contraseña():
+    print("=============== BIENVENIDO ===============")
+    print("=== GENERADOR DE CONTRASEÑAS  AL AZAR ===")
+
+    print("Seleccione el tipo de contraseña que desea generar:")
+    print("1. Contraseña solo de LETRAS")
+    print("2. Contraseña solo de NÚMEROS")
+    print("3. Contraseña de LETRAS Y NÚMEROS")
+    print("4. Contraseña de LETRAS, NÚMEROS Y CARACTERES ESPECIALES")
+    print("Nota: Todas las contraseñas tienen una longitud de 8 caracteres,")
+    print("e incluye mayúsculas y minúsculas")
+
+    opcion = input("Ingrese una opción (1-4): ")
+
+
+    longitudes = {
+        "1": 8,
+        "2": 8,
+        "3": 8,
+        "4": 8
+    }
+
+    if opcion == "1":
+        caracteres = string.ascii_letters
+    elif opcion == "2":
+        caracteres = string.digits
+    elif opcion == "3":
+        caracteres = string.ascii_letters + string.digits
+    elif opcion == "4":
+        caracteres = string.ascii_letters + string.digits + string.punctuation
+    else:
+        print("Opción inválida.")
+        return
+
+    longitud = longitudes[opcion]
+    contraseña = ''.join(random.choice(caracteres) for _ in range(longitud))
+
+    print("Se ha generado con exito tu contraseña. Puedes verla a continuación:")
+    print(contraseña)
+
+if __name__ == "__main__":
+    generar_contraseña()
+    input("Presiona ENTER para salir...")
